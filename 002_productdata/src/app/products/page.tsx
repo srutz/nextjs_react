@@ -33,7 +33,6 @@ export function delayFunction(ms: number) {
 }
 
 export default async function Page() {
-    unstable_noStore()
     return (
         <div className="flex flex-col">
             <Suspense fallback={<div>Loading...</div>}>
