@@ -1,5 +1,10 @@
-import { MainContent } from "@/components/MainContent";
+import { Counter } from "@/components/MainContent";
+import { Fragment } from "react";
 
 export default function Home() {
-    return <MainContent></MainContent>
+    return (
+        <>
+            <Counter name="top"></Counter>
+        </>
+    )
 }
