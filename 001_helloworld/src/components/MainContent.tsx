@@ -12,7 +12,7 @@ type Quote = {
     author: string
 }
 
-// oscar wilde quotes
+// quotes from oscar wilde, mark twain and arnold schwarzenegger
 const quotes: Quote[] = [
     { id: 1, text: "The only way to get rid of a temptation is to yield to it.", author: "Oscar Wilde" },
     { id: 2, text: "I can resist everything except temptation.", author: "Oscar Wilde" },
@@ -20,6 +20,13 @@ const quotes: Quote[] = [
     { id: 4, text: "I have the simplest tastes. I am always satisfied with the best.", author: "Oscar Wilde" },
     { id: 5, text: "The truth is rarely pure and never simple.", author: "Oscar Wilde" },
     { id: 6, text: "I am so clever that sometimes I don't understand a single word of what I am saying.", author: "Oscar Wilde" },
+    { id: 7, text: "The only way to keep your health is to eat what you don't want, drink what you don't like, and do what you'd rather not.", author: "Mark Twain" },
+    { id: 8, text: "The secret of getting ahead is getting started.", author: "Mark Twain" },
+    { id: 9, text: "The secret of getting started is breaking your complex overwhelming tasks into small manageable tasks, and then starting on the first one.", author: "Mark Twain" },
+    { id: 10, text: "The best way to cheer yourself up is to try to cheer somebody else up.", author: "Mark Twain" },
+    { id: 11, text: "The fear of death follows from the fear of life.", author: "Mark Twain" },
+    { id: 12, text: "Courage is resistance to fear, mastery of fear, not absence of fear.", author: "Mark Twain" },
+    { id: 13, text: "The only way to keep your health is to eat what you don't want, drink what you don't like, and do what you'd rather not.", author: "Mark Twain" },
 ]
 
 type QuoteItemProps = { quote: Quote, delay: number }
