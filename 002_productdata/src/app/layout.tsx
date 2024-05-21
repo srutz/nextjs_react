@@ -16,7 +16,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <html lang="en">
             <body className={inter.className}>
                 <MenuBar ></MenuBar>
-                <div className="flex flex-col grow h-4 p-4 overflow-y-scroll">
+                <div className="flex flex-col grow h-4 p-4 overflow-y-auto">
                     {children}
                 </div>
             </body>
