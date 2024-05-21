@@ -1,9 +1,10 @@
-import Image from "next/image";
+import { Counter, QuotesList } from "@/components/MainContent";
+import { Fragment } from "react";
 
 export default function Home() {
     return (
-        <main className="flex flex-col items-center">
-            Main-Page
-        </main>
+        <>
+            <QuotesList></QuotesList>
+        </>
     )
 }
