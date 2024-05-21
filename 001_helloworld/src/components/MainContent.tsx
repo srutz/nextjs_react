@@ -1,45 +1,9 @@
 "use client"
 
-import { Dispatch, MouseEvent, ReactNode, SetStateAction, useEffect, useState } from "react"
+import { useEffect, useState } from "react"
 import { AnimatedDiv, Point } from "./AnimatedDiv"
+import { Splitter } from "./Splitter"
 
-
-type WindowSize = {
-    width: number
-    height: number
-}
-
-export function useRepainter(intervalMs: number) {
-    const [ dummy, setDummy ] = useState(0)
-    useEffect(() => {
-        const id = setInterval(() => {
-            setDummy(dummy + 1)
-        }, intervalMs)
-        return () => {
-            clearInterval(id)
-        }
-    }, [ dummy ])
-}
-
-export function useWindowSize() {
-    const [ windowSize, setWindowSize] = useState<WindowSize>(
-        { width: window.innerWidth, height: window.innerHeight })
-
-    useEffect(() => {
-        const listener = () => {
-            setWindowSize({ 
-                width: window.innerWidth, 
-                height: window.innerHeight })
-        }
-        window.addEventListener("resize", listener)
-        // setup
-        return () => {
-            // cleanup
-            window.removeEventListener("resize", listener)
-        }
-    }, [])
-    return windowSize
-}
 
 
 type Quote = {
@@ -87,12 +51,12 @@ export function QuotesList() {
     </div>)
 }
 
+export function MainContent() {
+    return (
+        <Splitter>
+            <QuotesList></QuotesList>
+            <QuotesList></QuotesList>
+        </Splitter>
+    )
 
-
-export function Counter(props: { name: string }) {
-    console.log("Counter " + props.name + " rendered ")
-    const ws = useWindowSize()
-    return <div>{ws.width} x {ws.height}
-        {ws.height > 300 ? <div>HOCH</div> : <div>NIEDRIG</div>}
-    </div>
 }

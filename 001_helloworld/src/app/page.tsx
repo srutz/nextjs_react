@@ -1,10 +1,8 @@
-import { Counter, QuotesList } from "@/components/MainContent";
+import { MainContent } from "@/components/MainContent";
 import { Fragment } from "react";
 
 export default function Home() {
     return (
-        <>
-            <QuotesList></QuotesList>
-        </>
+        <MainContent></MainContent>
     )
 }
