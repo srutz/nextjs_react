@@ -1,8 +1,14 @@
+import { Pager } from "@/components/Pages"
+import { ProductsFilter } from "@/components/ProductsFilter"
 import { ProductsList } from "@/components/ProductsList"
 import { revalidatePath, revalidateTag, unstable_noStore } from "next/cache"
 import { cookies } from "next/headers"
 import { Suspense } from "react"
 
+
+/*
+ * type definition for products from dummyjson.com/products
+ */
 export type Product = {
     id: number
     title: string
@@ -16,6 +22,9 @@ export type Product = {
     images: string[]
 }
 
+/*
+ * the response from dummyjson.com/products
+ */
 export type ProductsResponse = {
     products: Product[]
     total: number
@@ -24,14 +33,7 @@ export type ProductsResponse = {
 }
 
 
-export function delayFunction(ms: number) {
-    return new Promise((resolve, reject) => {
-        setTimeout(() => {
-            resolve(true)
-        }, ms)
-    })
-}
-
+/*
 export default async function Page() {
     return (
         <div className="flex flex-col">
@@ -41,20 +43,60 @@ export default async function Page() {
         </div>
     )
 }
+*/
 
-async function ProductsContent() {
 
-    console.time("loading products")
-    const response = await fetch("https://dummyjson.com/products", { next: { tags: [ "products" ] }})
-    console.log("statuscode=" + response.status)
+/*
+ * makes the call to dummyjson.com/products
+ */
+async function loadProducts(filter: string, offset: number, limit: number) {
+    let url = "https://dummyjson.com/products"
+    const params: { limit: string, skip: string, q?: string } = {
+        limit: limit.toString(),
+        skip: offset.toString()
+    }
+    if (filter) {
+        url += "/search"
+        params.q = filter
+    }
+    const querystring = new URLSearchParams(params).toString()
+    url += "?" + querystring
+    const response = await fetch(url, { next: { tags: [ "products" ] }})
     const data = await response.json() as ProductsResponse
-    //await delayFunction(3_000)
+    return data
+}
+
+type SearchParamsType = {
+    searchParams?: {
+        q?: string
+        page?: string
+    }
+}
+
+
+/*
+ * the default export, eg this is the page content for this route
+ */
+export default async function Page({ searchParams }: SearchParamsType) {
+    const page = Number(searchParams?.page) || 1
+    const query = searchParams?.q || ""
+
+    const pageSize = 20
+    const data = await loadProducts(query, (page - 1) * pageSize, pageSize)
+    const pageCount = Math.ceil(data.total / pageSize)
     const products = data.products
-    console.timeEnd("loading products")
-    //revalidateTag("products")
-    
+
     return (
-        <ProductsList products={products} />
+        <div className="flex flex-col items-center">
+            <div className="flex items-center">
+                <div className="flex gap-4 items-baseline">
+                    <ProductsFilter></ProductsFilter>
+                    <Pager page={page} pageCount={pageCount}></Pager>
+                </div>
+            </div>
+            <ProductsList products={products}></ProductsList>
+        </div>
     )
 }
+            
 
