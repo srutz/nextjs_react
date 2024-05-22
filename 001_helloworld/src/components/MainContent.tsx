@@ -40,10 +40,9 @@ function QuoteItem(props: QuoteItemProps) {
         setPos({ x:0, y: 0})
     }, [])
     return (
-        <AnimatedDiv relative 
-                position={pos} opacity={opacity} delayMs={delay}>
+        <AnimatedDiv relative  position={pos} opacity={opacity} delayMs={delay}>
             <div className="flex flex-col">
-                <div className="text-sm">{quote.text}</div>
+                <div className="text-sm"> !!!! {quote.text}</div>
                 <div className="text-xs text-gray-700">{quote.author}</div>
             </div>
         </AnimatedDiv>

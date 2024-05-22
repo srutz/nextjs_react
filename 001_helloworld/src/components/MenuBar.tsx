@@ -8,6 +8,7 @@ export function MenuBar() {
     const menuItems = [
         { label: "Home", href: "/" },
         { label: "About", href: "/about" },
+        { label: "Products", href: "/products" },
         { label: "Contact", href: "/contact" },
     ]
 
@@ -19,9 +20,12 @@ export function MenuBar() {
             <div className="text-3xl font-bold mr-8">Helloworld</div>
             <div className="flex gap-4">
                 {menuItems.map((item, index) => (
-                    <Link key={index} href={item.href} className={"menulink " + (pathname == item.href ? "menulink-active" : "")}>{item.label}</Link>
+                    <Link key={index} href={item.href} 
+                        className={"menulink " + (pathname == item.href ? "menulink-active" : "")}>
+                            {item.label}
+                    </Link>
                 ))}
             </div>
-        </div>   
+        </div>
     )
 }
