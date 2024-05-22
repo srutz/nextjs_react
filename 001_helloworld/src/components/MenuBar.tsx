@@ -1,7 +1,8 @@
 "use client"
 
 import Link from "next/link"
-import { usePathname } from "next/navigation"
+import { usePathname, useRouter } from "next/navigation"
+import { useEffect } from "react"
 
 export function MenuBar() {
 
@@ -13,7 +14,10 @@ export function MenuBar() {
     ]
 
     const pathname = usePathname()
-    console.log("pathname=" + pathname)
+    const router = useRouter()
+    useEffect(() => {
+        router.refresh()
+    }, [pathname])
 
     return (
         <div className="flex h-16 border-b border-gray-300 items-center pl-8 pr-4">
