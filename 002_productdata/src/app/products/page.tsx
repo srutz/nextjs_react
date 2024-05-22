@@ -48,30 +48,6 @@ async function loadProducts(filter: string, offset: number, limit: number) {
     url += "?" + querystring
     const response = await fetch(url, { cache: 'no-store', next: { tags: [ "products" ] }})
     const data = await response.json() as ProductsResponse
-    await (await fetch(url, { cache: 'no-store', next: { tags: [ "products" ] }})).json() as ProductsResponse
-    await (await fetch(url, { cache: 'no-store', next: { tags: [ "products" ] }})).json() as ProductsResponse
-    await (await fetch(url, { cache: 'no-store', next: { tags: [ "products" ] }})).json() as ProductsResponse
-    await (await fetch(url, { cache: 'no-store', next: { tags: [ "products" ] }})).json() as ProductsResponse
-    await (await fetch(url, { cache: 'no-store', next: { tags: [ "products" ] }})).json() as ProductsResponse
-    await (await fetch(url, { cache: 'no-store', next: { tags: [ "products" ] }})).json() as ProductsResponse
-    await (await fetch(url, { cache: 'no-store', next: { tags: [ "products" ] }})).json() as ProductsResponse
-    await (await fetch(url, { cache: 'no-store', next: { tags: [ "products" ] }})).json() as ProductsResponse
-    await (await fetch(url, { cache: 'no-store', next: { tags: [ "products" ] }})).json() as ProductsResponse
-    await (await fetch(url, { cache: 'no-store', next: { tags: [ "products" ] }})).json() as ProductsResponse
-    await (await fetch(url, { cache: 'no-store', next: { tags: [ "products" ] }})).json() as ProductsResponse
-    await (await fetch(url, { cache: 'no-store', next: { tags: [ "products" ] }})).json() as ProductsResponse
-    await (await fetch(url, { cache: 'no-store', next: { tags: [ "products" ] }})).json() as ProductsResponse
-    await (await fetch(url, { cache: 'no-store', next: { tags: [ "products" ] }})).json() as ProductsResponse
-    await (await fetch(url, { cache: 'no-store', next: { tags: [ "products" ] }})).json() as ProductsResponse
-    await (await fetch(url, { cache: 'no-store', next: { tags: [ "products" ] }})).json() as ProductsResponse
-    await (await fetch(url, { cache: 'no-store', next: { tags: [ "products" ] }})).json() as ProductsResponse
-    await (await fetch(url, { cache: 'no-store', next: { tags: [ "products" ] }})).json() as ProductsResponse
-    await (await fetch(url, { cache: 'no-store', next: { tags: [ "products" ] }})).json() as ProductsResponse
-    await (await fetch(url, { cache: 'no-store', next: { tags: [ "products" ] }})).json() as ProductsResponse
-    await (await fetch(url, { cache: 'no-store', next: { tags: [ "products" ] }})).json() as ProductsResponse
-    await (await fetch(url, { cache: 'no-store', next: { tags: [ "products" ] }})).json() as ProductsResponse
-    await (await fetch(url, { cache: 'no-store', next: { tags: [ "products" ] }})).json() as ProductsResponse
-    await (await fetch(url, { cache: 'no-store', next: { tags: [ "products" ] }})).json() as ProductsResponse
     return data
 }
 
