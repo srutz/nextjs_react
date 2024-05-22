@@ -1,5 +1,6 @@
 "use client"
 
+import { useSocketClient } from "@/hooks/SocketClient"
 import Link from "next/link"
 import { usePathname, useRouter } from "next/navigation"
 import { useEffect } from "react"
@@ -16,8 +17,14 @@ export function MenuBar() {
     const pathname = usePathname()
     const router = useRouter()
     useEffect(() => {
-        router.refresh()
+        router.refresh()  // force a refresh on the server
     }, [pathname])
+
+    const [ socket, connected ] = useSocketClient()
+    socket.on("mychannel", (data) => {
+        debugger
+        console.log("got message on mychannel:", data)
+    })
 
     return (
         <div className="flex h-16 border-b border-gray-300 items-center pl-8 pr-4">

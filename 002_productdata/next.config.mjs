@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    scrollRestoration: true,   
-	experimental: {
+    experimental: {
+        scrollRestoration: true,   
 		instrumentationHook: true
 	}
 };

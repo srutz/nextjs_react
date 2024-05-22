@@ -8,7 +8,6 @@ export default async function Page({ params }: ProductPageProps) {
 
     const productId = params.slug
 
-
     /* load product again, since we might have navigated here directly */
     const r = await fetch("https://dummyjson.com/products/" + productId)
     const d = await r.json()
