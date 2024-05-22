@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import { ReactNode } from "react";
+import { ReactNode, Suspense } from "react";
 import { MenuBar } from "@/components/MenuBar";
 
 const inter = Inter({ subsets: ["latin"] })
@@ -17,7 +17,9 @@ export default function RootLayout({ children }: { children: ReactNode }) {
             <body className={inter.className}>
                 <MenuBar ></MenuBar>
                 <div className="flex flex-col grow h-4 p-4 overflow-y-auto">
-                    {children}
+                    <Suspense fallback={<div>Loading...</div>}>
+                        {children}
+                    </Suspense>
                 </div>
             </body>
         </html>

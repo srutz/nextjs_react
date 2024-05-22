@@ -1,9 +1,6 @@
 import { Pager } from "@/components/Pages"
 import { ProductsFilter } from "@/components/ProductsFilter"
 import { ProductsList } from "@/components/ProductsList"
-import { revalidatePath, revalidateTag, unstable_noStore } from "next/cache"
-import { cookies } from "next/headers"
-import { Suspense } from "react"
 
 
 /*
@@ -33,18 +30,6 @@ export type ProductsResponse = {
 }
 
 
-/*
-export default async function Page() {
-    return (
-        <div className="flex flex-col">
-            <Suspense fallback={<div>Loading...</div>}>
-                <ProductsContent></ProductsContent>
-            </Suspense>
-        </div>
-    )
-}
-*/
-
 
 /*
  * makes the call to dummyjson.com/products
@@ -61,11 +46,39 @@ async function loadProducts(filter: string, offset: number, limit: number) {
     }
     const querystring = new URLSearchParams(params).toString()
     url += "?" + querystring
-    const response = await fetch(url, { next: { tags: [ "products" ] }})
+    const response = await fetch(url, { cache: 'no-store', next: { tags: [ "products" ] }})
     const data = await response.json() as ProductsResponse
+    await (await fetch(url, { cache: 'no-store', next: { tags: [ "products" ] }})).json() as ProductsResponse
+    await (await fetch(url, { cache: 'no-store', next: { tags: [ "products" ] }})).json() as ProductsResponse
+    await (await fetch(url, { cache: 'no-store', next: { tags: [ "products" ] }})).json() as ProductsResponse
+    await (await fetch(url, { cache: 'no-store', next: { tags: [ "products" ] }})).json() as ProductsResponse
+    await (await fetch(url, { cache: 'no-store', next: { tags: [ "products" ] }})).json() as ProductsResponse
+    await (await fetch(url, { cache: 'no-store', next: { tags: [ "products" ] }})).json() as ProductsResponse
+    await (await fetch(url, { cache: 'no-store', next: { tags: [ "products" ] }})).json() as ProductsResponse
+    await (await fetch(url, { cache: 'no-store', next: { tags: [ "products" ] }})).json() as ProductsResponse
+    await (await fetch(url, { cache: 'no-store', next: { tags: [ "products" ] }})).json() as ProductsResponse
+    await (await fetch(url, { cache: 'no-store', next: { tags: [ "products" ] }})).json() as ProductsResponse
+    await (await fetch(url, { cache: 'no-store', next: { tags: [ "products" ] }})).json() as ProductsResponse
+    await (await fetch(url, { cache: 'no-store', next: { tags: [ "products" ] }})).json() as ProductsResponse
+    await (await fetch(url, { cache: 'no-store', next: { tags: [ "products" ] }})).json() as ProductsResponse
+    await (await fetch(url, { cache: 'no-store', next: { tags: [ "products" ] }})).json() as ProductsResponse
+    await (await fetch(url, { cache: 'no-store', next: { tags: [ "products" ] }})).json() as ProductsResponse
+    await (await fetch(url, { cache: 'no-store', next: { tags: [ "products" ] }})).json() as ProductsResponse
+    await (await fetch(url, { cache: 'no-store', next: { tags: [ "products" ] }})).json() as ProductsResponse
+    await (await fetch(url, { cache: 'no-store', next: { tags: [ "products" ] }})).json() as ProductsResponse
+    await (await fetch(url, { cache: 'no-store', next: { tags: [ "products" ] }})).json() as ProductsResponse
+    await (await fetch(url, { cache: 'no-store', next: { tags: [ "products" ] }})).json() as ProductsResponse
+    await (await fetch(url, { cache: 'no-store', next: { tags: [ "products" ] }})).json() as ProductsResponse
+    await (await fetch(url, { cache: 'no-store', next: { tags: [ "products" ] }})).json() as ProductsResponse
+    await (await fetch(url, { cache: 'no-store', next: { tags: [ "products" ] }})).json() as ProductsResponse
+    await (await fetch(url, { cache: 'no-store', next: { tags: [ "products" ] }})).json() as ProductsResponse
     return data
 }
 
+
+/*
+ * type definition for the search params of the page
+ */
 type SearchParamsType = {
     searchParams?: {
         q?: string
