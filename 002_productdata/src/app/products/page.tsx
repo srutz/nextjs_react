@@ -62,11 +62,16 @@ type SearchParamsType = {
     }
 }
 
+import { Socket } from "socket.io"
+import { getSocketIoInstance } from "@/server.js"
+import { getSocketIoReference } from "@/components/ServerUtil"
+
 
 /*
  * the default export, eg this is the page content for this route
  */
 export default async function Page({ searchParams }: SearchParamsType) {
+
     const page = Number(searchParams?.page) || 1
     const query = searchParams?.q || ""
 
@@ -74,6 +79,8 @@ export default async function Page({ searchParams }: SearchParamsType) {
     const data = await loadProducts(query, (page - 1) * pageSize, pageSize)
     const pageCount = Math.ceil(data.total / pageSize)
     const products = data.products
+
+    getSocketIoReference()?.emit("mychannel", "loaded products")
 
     return (
         <div className="flex flex-col items-center">

@@ -8,8 +8,8 @@ export const socket = io();
 
 
 export function useSocketClient() {
-    const [connected, setIsConnected] = useState(false);
-    const [transport, setTransport] = useState("");
+    const [connected, setIsConnected] = useState(false)
+    const [transport, setTransport] = useState("")
 
     useEffect(() => {
         if (socket.connected) {
@@ -21,12 +21,12 @@ export function useSocketClient() {
 
             socket.io.engine.on("upgrade", (transport) => {
                 setTransport(transport.name)
-            });
+            })
         }
 
         function onDisconnect() {
             setIsConnected(false)
-            setTransport("N/A")
+            setTransport("")
         }
 
         socket.on("connect", onConnect)

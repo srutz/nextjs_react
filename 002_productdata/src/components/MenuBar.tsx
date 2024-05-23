@@ -14,17 +14,21 @@ export function MenuBar() {
         { label: "Contact", href: "/contact" },
     ]
 
+    const [ socket, connected ] = useSocketClient()
     const pathname = usePathname()
     const router = useRouter()
     useEffect(() => {
         router.refresh()  // force a refresh on the server
+
+        socket.on("mychannel", (data) => {
+            console.log("got message on mychannel:", data)
+            debugger
+        })
+        return () => {
+            socket.off("mychannel")
+        }
     }, [pathname])
 
-    const [ socket, connected ] = useSocketClient()
-    socket.on("mychannel", (data) => {
-        debugger
-        console.log("got message on mychannel:", data)
-    })
 
     return (
         <div className="flex h-16 border-b border-gray-300 items-center pl-8 pr-4">
