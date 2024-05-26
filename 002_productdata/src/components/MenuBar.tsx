@@ -4,6 +4,8 @@ import { useSocketClient } from "@/hooks/SocketClient"
 import Link from "next/link"
 import { usePathname, useRouter } from "next/navigation"
 import { useEffect } from "react"
+import { NotificationToast } from "./NotificationToast"
+import { EventBus } from "./eventbus"
 
 export function MenuBar() {
 
@@ -14,20 +16,26 @@ export function MenuBar() {
         { label: "Contact", href: "/contact" },
     ]
 
-    const [ socket, connected ] = useSocketClient()
     const pathname = usePathname()
     const router = useRouter()
     useEffect(() => {
-        router.refresh()  // force a refresh on the server
+        router.refresh()  // force a refresh on the server on navigation
+    }, [pathname])
 
+    /* 
+     * Hook up the listener to socket.io here
+     * could well be in another place but in this example this is fine
+     */
+    const [ socket, connected ] = useSocketClient()
+    useEffect(() => {
         socket.on("mychannel", (data) => {
-            console.log("got message on mychannel:", data)
-            debugger
+            EventBus.instance.emit("notification", { message: data, severity: "info" })
         })
         return () => {
             socket.off("mychannel")
         }
-    }, [pathname])
+    })
+
 
 
     return (

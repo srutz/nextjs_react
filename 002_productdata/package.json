@@ -11,10 +11,11 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@vercel/otel": "^1.8.2",
     "next": "14.2.3",
     "react": "^18",
     "react-dom": "^18",
+    "socket.io": "^4.7.5",
+    "socket.io-client": "^4.7.5",
     "use-debounce": "^10.0.0"
   },
   "devDependencies": {

@@ -19,7 +19,6 @@ export function ProductCard({ product, large } : { large?: boolean, product: Pro
 
     const onClick = () => {
         socket.emit("mychannel", "click on product " + product.id)
-        debugger
     }
 
     return (

@@ -62,8 +62,6 @@ type SearchParamsType = {
     }
 }
 
-import { Socket } from "socket.io"
-import { getSocketIoInstance } from "@/server.js"
 import { getSocketIoReference } from "@/components/ServerUtil"
 
 
@@ -76,11 +74,19 @@ export default async function Page({ searchParams }: SearchParamsType) {
     const query = searchParams?.q || ""
 
     const pageSize = 20
+    const t0 = new Date().getTime()
     const data = await loadProducts(query, (page - 1) * pageSize, pageSize)
     const pageCount = Math.ceil(data.total / pageSize)
     const products = data.products
+    const dt = new Date().getTime() - t0
 
-    getSocketIoReference()?.emit("mychannel", "loaded products")
+    /* here we are on the server and can emit a message to the client 
+     * via socket.io */
+    if (getSocketIoReference()) {
+        getSocketIoReference()?.emit("mychannel", "Server: Loaded #" + products.length + " products in " + dt + " ms")
+    } else {
+        console.warn("No socket.io instance found, was the server started using the custom server.js?")
+    }
 
     return (
         <div className="flex flex-col items-center">

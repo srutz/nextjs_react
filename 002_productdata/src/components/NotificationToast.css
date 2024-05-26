@@ -1,0 +1,23 @@
+.notificationtoast {
+    background-color: black;
+    color: #e8e8e8;
+    position: absolute;
+    bottom: -100px;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    width: 360px;
+    height: 48px;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    opacity: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: all 300ms ease-in-out;
+    font-weight: 700;
+    box-sizing: content-box;
+    z-index: 110;
+}

@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import { ReactNode, Suspense } from "react";
+import { ReactNode, Suspense, useEffect } from "react";
 import { MenuBar } from "@/components/MenuBar";
+import { NotificationToast } from "@/components/NotificationToast";
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -21,6 +22,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
                         {children}
                     </Suspense>
                 </div>
+                <NotificationToast></NotificationToast>
             </body>
         </html>
     )

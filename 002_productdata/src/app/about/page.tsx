@@ -4,7 +4,7 @@ import Image from "next/image";
 export default function Home() {
     return (
         <main className="flex flex-col items-center">
-            <LoremIpsum repeat={30} />
+            <LoremIpsum repeat={1} />
 
         </main>
     )
