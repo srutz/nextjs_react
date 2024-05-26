@@ -1,0 +1,35 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+body {
+    @apply flex flex-col h-screen overflow-y-hidden;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+button {
+    @apply bg-gray-600 text-white px-4 py-2 rounded-md;
+}
+
+.menulink {
+    @apply text-gray-700
+}
+
+.menulink:hover {
+    @apply text-black
+}
+
+.menulink-active {
+    @apply text-black border-b-2 border-black
+}
+
+.h-96 {
+    height: 500px;
+}
