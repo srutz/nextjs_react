@@ -1,6 +1,16 @@
 
 # Nextjs Socket IO Example
 
+## Installation
+
+Install using
+
+```
+pnpm i
+```
+
+Plain npm will also work, a package-lock.json however will be generated locally then.
+
 ## Socket.io
 
 This example uses socket.io in a next.js application. The next.js server needs to be started like this in order for socket.io 
@@ -39,12 +49,19 @@ Use
 getSocketIoReference()?.emit("mychannel", "my message or data here")
 ```
 
-to send a string message or a json object to the client from the server.
+to send a string message or a json object to the client from the server. You can of course use your own channels and send more complex data in either direction as you like.
 
 ## Example
 
 In the example the above patterns are used for demonstration, but nothing is actually send or received that makes sense. This is just the example after all.
 
 If the products are loaded on the serverside an information about the runtime is send to the client, who then shows a short popup-notification (so-called toast).
+
+## Why server.js
+
+Server.js is a bit ugly but required to intercept the startup of NEXT.js.
+Next.js folks probably need to come up with another solution, but dislike the idea of customized node.js backend servers, as that breaks from of their proprietary deployment scenarios.
+
+However the server.js is included as a plain javascript file, since it never needs to be changed. If you prefer typescript then you need to setup a separate build-step for this.
 
 

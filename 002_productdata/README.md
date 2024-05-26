@@ -1,6 +1,16 @@
 
 # NEXT.js example project
 
+## Installation
+
+Install using
+
+```
+pnpm i
+```
+
+Plain npm will also work, a package-lock.json however will be generated locally then.
+
 ## Loading paged data
 
 This project shows how to load paged data and keeping the state in the URL. This is the preferred
